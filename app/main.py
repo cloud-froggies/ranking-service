@@ -7,9 +7,13 @@ app = FastAPI()
 
 
 @app.get("/ranking")
-def read_root(advertiser_campaigns: List[int], advertiser_campaigns_bids: List[float], maximum: Optional[int] = 10):
+def ranking(advertiser_campaigns: str, advertiser_campaigns_bids: str, maximum: Optional[int] = 10):
+    # Split multiple values
+    campaigns = [int(i) for i in advertiser_campaigns.split(",")]
+    bids = [float(i) for i in advertiser_campaigns_bids.split(",")]
+
     # Shuffle tuples list in case of repeated bids
-    shuffled = list(zip(advertiser_campaigns, advertiser_campaigns_bids))
+    shuffled = list(zip(campaigns, bids))
     random.shuffle(shuffled)
 
     # Sort according to bids
