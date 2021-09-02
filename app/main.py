@@ -12,10 +12,10 @@ def read_root(advertiser_campaigns: List[int], advertiser_campaigns_bids: List[f
     shuffled = list(zip(advertiser_campaigns, advertiser_campaigns_bids))
     random.shuffle(shuffled)
 
-    # Sort according bids
+    # Sort according to bids
     sorted_advertiser_campaigns = sorted(shuffled, key=lambda x: x[1])
     
-    # Keep only ids according maximum 
+    # Keep only ids according to maximum 
     campaign_ids = []
     for index, tuple in enumerate(sorted_advertiser_campaigns):
         if index < maximum-1:
